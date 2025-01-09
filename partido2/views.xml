@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View: Equipo-Jugador -->
+    <record id="view_tree_equipojugador" model="ir.ui.view">
+        <field name="name">partido2.equipojugador.tree</field>
+        <field name="model">partido2.equipojugador</field>
+        <field name="arch" type="xml">
+            <tree string="Equipo-Jugador">
+                <field name="name"/>
+                <field name="fecha_contrato"/>
+                <field name="jugador_id"/>
+                <field name="equipo_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree View: Jugador -->
+    <record id="view_tree_jugador" model="ir.ui.view">
+        <field name="name">partido2.jugador.tree</field>
+        <field name="model">partido2.jugador</field>
+        <field name="arch" type="xml">
+            <tree string="Jugador">
+                <field name="name"/>
+                <field name="apellido"/>
+                <field name="posicion"/>
+                <field name="edad"/> <!-- Add Edad here -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree View: Equipo -->
+    <record id="view_tree_equipo" model="ir.ui.view">
+        <field name="name">partido2.equipo.tree</field>
+        <field name="model">partido2.equipo</field>
+        <field name="arch" type="xml">
+            <tree string="Equipo">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+ <!-- Tree View: Partido -->
+    <record id="view_tree_partido" model="ir.ui.view">
+        <field name="name">partido2.partido.tree</field>
+        <field name="model">partido2.partido</field>
+        <field name="arch" type="xml">
+            <tree string="Partido">
+                <field name="equipo_local_id"/>
+                <field name="equipo_visitante_id"/>
+                <field name="goles_local"/>
+                <field name="goles_visitante"/>
+                <field name="ganador"/>
+            </tree>
+        </field>
+    </record>
+    <!-- Action: Equipo-Jugador -->
+    <record id="action_equipojugador" model="ir.actions.act_window">
+        <field name="name">Equipo-Jugador</field>
+        <field name="res_model">partido2.equipojugador</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona las relaciones entre equipos y jugadores.</p>
+        </field>
+    </record>
+
+    <!-- Action: Jugador -->
+    <record id="action_jugador" model="ir.actions.act_window">
+        <field name="name">Jugadores</field>
+        <field name="res_model">partido2.jugador</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los jugadores.</p>
+        </field>
+    </record>
+
+    <!-- Action: Equipo -->
+    <record id="action_equipo" model="ir.actions.act_window">
+        <field name="name">Equipos</field>
+        <field name="res_model">partido2.equipo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los equipos.</p>
+        </field>
+    </record>
+<!-- Action: Partido -->
+    <record id="action_partido" model="ir.actions.act_window">
+        <field name="name">Partidos</field>
+        <field name="res_model">partido2.partido</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los partidos.</p>
+        </field>
+    </record>
+    <!-- Form View: Equipo-Jugador -->
+    <record id="view_form_equipojugador" model="ir.ui.view">
+        <field name="name">partido2.equipojugador.form</field>
+        <field name="model">partido2.equipojugador</field>
+        <field name="arch" type="xml">
+            <form string="Equipo-Jugador">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="fecha_contrato"/>
+                        <field name="jugador_id"/>
+                        <field name="equipo_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View: Jugador -->
+    <record id="view_form_jugador" model="ir.ui.view">
+        <field name="name">partido2.jugador.form</field>
+        <field name="model">partido2.jugador</field>
+        <field name="arch" type="xml">
+            <form string="Jugador">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="apellido"/>
+                        <field name="posicion"/>
+                        <field name="fecha_nacimiento"/>
+                        <field name="edad"/> <!-- Add Edad here -->
+                    </group>
+                    <notebook>
+                        <page string="Equipos Asociados">
+                            <field name="equipojugadores_id" widget="one2many_list">
+                                <tree string="Equipos del Jugador">
+                                    <field name="equipo_id"/>
+                                    <field name="fecha_contrato"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View: Equipo -->
+    <record id="view_form_equipo" model="ir.ui.view">
+        <field name="name">partido2.equipo.form</field>
+        <field name="model">partido2.equipo</field>
+        <field name="arch" type="xml">
+            <form string="Equipo">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <notebook>
+                        <page string="Jugadores Asociados">
+                            <field name="equipojugadores_id" widget="one2many_list">
+                                <tree string="Jugadores del Equipo">
+                                    <field name="jugador_id"/>
+                                    <field name="fecha_contrato"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!-- Form View: Partido -->
+    <record id="view_form_partido" model="ir.ui.view">
+        <field name="name">partido2.partido.form</field>
+        <field name="model">partido2.partido</field>
+        <field name="arch" type="xml">
+            <form string="Partido">
+                <sheet>
+                    <group>
+                        <field name="equipo_local_id"/>
+                        <field name="equipo_visitante_id"/>
+                        <field name="goles_local"/>
+                        <field name="goles_visitante"/>
+                        <field name="ganador"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Calendar View: Equipo-Jugador -->
+    <record id="view_calendar_equipojugador" model="ir.ui.view">
+        <field name="name">partido2.equipojugador.calendar</field>
+        <field name="model">partido2.equipojugador</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendario de Equipo-Jugador" date_start="fecha_contrato">
+                <field name="name"/>
+                <field name="jugador_id"/>
+                <field name="equipo_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Calendar Action -->
+    <record id="action_calendar_equipojugador" model="ir.actions.act_window">
+        <field name="name">Calendario</field>
+        <field name="res_model">partido2.equipojugador</field>
+        <field name="view_mode">calendar,tree,form</field>
+        <field name="view_id" ref="view_calendar_equipojugador"/>
+        <field name="help" type="html">
+            <p>Consulta los eventos relacionados con los equipos y jugadores.</p>
+        </field>
+    </record>
+
+    <!-- Menu Definitions -->
+    <menuitem id="menu_partido2_root" name="partido2" sequence="10"/>
+
+    <menuitem id="menu_equipojugador"
+              name="Equipo-Jugador"
+              parent="menu_partido2_root"
+              sequence="20"
+              action="action_equipojugador"/>
+
+    <menuitem id="menu_jugador"
+              name="Jugadores"
+              parent="menu_partido2_root"
+              sequence="30"
+              action="action_jugador"/>
+
+    <menuitem id="menu_equipo"
+              name="Equipos"
+              parent="menu_partido2_root"
+              sequence="40"
+              action="action_equipo"/>
+
+    <menuitem id="menu_calendar_equipojugador"
+              name="Calendario"
+              parent="menu_partido2_root"
+              sequence="50"
+              action="action_calendar_equipojugador"/>
+
+    <!-- Menu Item: Partido -->
+    <menuitem id="menu_partido"
+              name="Partidos"
+              parent="menu_partido2_root"
+              sequence="60"
+              action="action_partido"/>
+</odoo>

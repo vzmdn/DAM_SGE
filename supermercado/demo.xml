@@ -1,0 +1,178 @@
+<odoo>
+    <data>
+        <!-- Datos clientes -->
+<record id="cliente1" model="supermercado.cliente">
+    <field name="nombre">Alejandro Martínez</field>
+    <field name="numero_socio">4827</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente2" model="supermercado.cliente">
+    <field name="nombre">María González</field>
+    <field name="numero_socio">1635</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente3" model="supermercado.cliente">
+    <field name="nombre">Sofía Fernández</field>
+    <field name="numero_socio">9074</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente4" model="supermercado.cliente">
+    <field name="nombre">Javier López</field>
+    <field name="numero_socio">3481</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente5" model="supermercado.cliente">
+    <field name="nombre">Isabel Sánchez</field>
+    <field name="numero_socio">7290</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente6" model="supermercado.cliente">
+    <field name="nombre">Carlos Pérez</field>
+    <field name="numero_socio">5163</field>
+    <field name="country_id" ref="base.co"/>  <!-- Colombia -->
+</record>
+<record id="cliente7" model="supermercado.cliente">
+    <field name="nombre">Lucía Ramírez</field>
+    <field name="numero_socio">8042</field>
+    <field name="country_id" ref="base.ar"/>  <!-- Argentina -->
+</record>
+<record id="cliente8" model="supermercado.cliente">
+    <field name="nombre">Diego Hernández</field>
+    <field name="numero_socio">2918</field>
+    <field name="country_id" ref="base.co"/>  <!-- Colombia -->
+</record>
+<record id="cliente9" model="supermercado.cliente">
+    <field name="nombre">Ana Rodríguez</field>
+    <field name="numero_socio">6754</field>
+    <field name="country_id" ref="base.es"/>  <!-- Spain -->
+</record>
+<record id="cliente10" model="supermercado.cliente">
+    <field name="nombre">Pablo Morales</field>
+    <field name="numero_socio">4309</field>
+    <field name="country_id" ref="base.ar"/>  <!-- Argentina -->
+</record>
+
+
+
+
+        <!-- Datos Encargados -->
+        <record id="encargado1" model="supermercado.encargado">
+            <field name="nombre">Marta Fernández</field>
+            <field name="fecha_inicio">2021-06-01</field>
+        </record>
+
+        <record id="encargado2" model="supermercado.encargado">
+            <field name="nombre">Pedro Ruiz</field>
+            <field name="fecha_inicio">2020-11-10</field>
+        </record>
+
+        <record id="encargado3" model="supermercado.encargado">
+            <field name="nombre">Isabel Sánchez</field>
+            <field name="fecha_inicio">2019-09-15</field>
+        </record>
+
+        <!-- Datos Cajeros -->
+        <record id="cajero1" model="supermercado.cajero">
+            <field name="nombre">Carlos López</field>
+            <field name="fecha_inicio">2023-03-15</field>
+            <field name="encargado_id" ref="encargado1"/>
+        </record>
+
+        <record id="cajero2" model="supermercado.cajero">
+            <field name="nombre">Ana Pérez</field>
+            <field name="fecha_inicio">2023-05-22</field>
+            <field name="encargado_id" ref="encargado2"/>
+        </record>
+
+        <record id="cajero3" model="supermercado.cajero">
+            <field name="nombre">José Martínez</field>
+            <field name="fecha_inicio">2022-12-10</field>
+            <field name="encargado_id" ref="encargado3"/>
+        </record>
+
+        <record id="cajero4" model="supermercado.cajero">
+            <field name="nombre">Lucía Gómez</field>
+            <field name="fecha_inicio">2024-01-05</field>
+            <field name="encargado_id" ref="encargado1"/>
+        </record>
+
+        <record id="cajero5" model="supermercado.cajero">
+            <field name="nombre">Fernando Rodríguez</field>
+            <field name="fecha_inicio">2023-07-30</field>
+            <field name="encargado_id" ref="encargado2"/>
+        </record>
+
+        <!-- Datos productos -->
+        <record id="producto1" model="supermercado.producto">
+            <field name="nombre">Aceite de oliva</field>
+            <field name="precio_unidad">6.35</field>
+            <field name="stock_inicial">30</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+        <record id="producto2" model="supermercado.producto">
+            <field name="nombre">Leche entera</field>
+            <field name="precio_unidad">1.20</field>
+            <field name="stock_inicial">100</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+        <record id="producto3" model="supermercado.producto">
+            <field name="nombre">Papel higiénico</field>
+            <field name="precio_unidad">2.50</field>
+            <field name="stock_inicial">50</field>
+            <field name="tipo">higiene</field>
+        </record>
+
+        <record id="producto4" model="supermercado.producto">
+            <field name="nombre">Tomates frescos</field>
+            <field name="precio_unidad">2.80</field>
+            <field name="stock_inicial">75</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+        <record id="producto5" model="supermercado.producto">
+            <field name="nombre">Shampoo</field>
+            <field name="precio_unidad">3.75</field>
+            <field name="stock_inicial">60</field>
+            <field name="tipo">higiene</field>
+        </record>
+
+        <record id="producto6" model="supermercado.producto">
+            <field name="nombre">Pan de molde</field>
+            <field name="precio_unidad">1.50</field>
+            <field name="stock_inicial">120</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+        <record id="producto7" model="supermercado.producto">
+            <field name="nombre">Pasta espagueti</field>
+            <field name="precio_unidad">1.95</field>
+            <field name="stock_inicial">85</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+        <record id="producto8" model="supermercado.producto">
+            <field name="nombre">Gel de ducha</field>
+            <field name="precio_unidad">4.00</field>
+            <field name="stock_inicial">40</field>
+            <field name="tipo">higiene</field>
+        </record>
+
+        <record id="producto9" model="supermercado.producto">
+            <field name="nombre">Detergente líquido</field>
+            <field name="precio_unidad">5.25</field>
+            <field name="stock_inicial">30</field>
+            <field name="tipo">higiene</field>
+        </record>
+
+        <record id="producto10" model="supermercado.producto">
+            <field name="nombre">Manzanas</field>
+            <field name="precio_unidad">1.30</field>
+            <field name="stock_inicial">60</field>
+            <field name="tipo">alimentacion</field>
+        </record>
+
+
+    </data>
+</odoo>

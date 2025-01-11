@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View: Cliente -->
+    <record id="view_tree_cliente" model="ir.ui.view">
+        <field name="name">supermercado.cliente.tree</field>
+        <field name="model">supermercado.cliente</field>
+        <field name="arch" type="xml">
+            <tree string="Cliente">
+                <field name="nombre"/>
+                <field name="country_id"/>
+                <field name="total_gastado"/>
+                <field name="numero_socio"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree View: Cesta -->
+<record id="view_tree_cesta" model="ir.ui.view">
+    <field name="name">supermercado.cesta.tree</field>
+    <field name="model">supermercado.cesta</field>
+    <field name="arch" type="xml">
+        <tree string="Cesta">
+            <field name="cliente_id" string="Cliente"/>
+            <field name="cajero_id" string="Cajero"/>
+            <field name="coste" string="Coste"/>
+            <field name="fecha" string="Fecha"/>
+        </tree>
+    </field>
+</record>
+
+    <!-- Tree View: Cajero -->
+   <record id="view_tree_cajero" model="ir.ui.view">
+    <field name="name">supermercado.cajero.tree</field>
+    <field name="model">supermercado.cajero</field>
+    <field name="arch" type="xml">
+        <tree string="Cajero">
+            <field name="nombre"/>
+            <field name="fecha_inicio"/>
+            <field name="total_cobrado"/>
+            <field name="encargado_id" string="Encargado"/>
+        </tree>
+    </field>
+</record>
+
+
+    <!-- Tree View: Encargado -->
+    <record id="view_tree_encargado" model="ir.ui.view">
+        <field name="name">supermercado.encargado.tree</field>
+        <field name="model">supermercado.encargado</field>
+        <field name="arch" type="xml">
+            <tree string="Encargado">
+                <field name="nombre"/>
+                <field name="fecha_inicio"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Tree View: Producto -->
+    <record id="view_tree_producto" model="ir.ui.view">
+        <field name="name">supermercado.producto.tree</field>
+        <field name="model">supermercado.producto</field>
+        <field name="arch" type="xml">
+            <tree string="Producto">
+                <field name="nombre"/>
+                <field name="precio_unidad"/>
+                <field name="stock"/>
+                <field name="tipo"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action: Cliente -->
+    <record id="action_cliente" model="ir.actions.act_window">
+        <field name="name">Clientes</field>
+        <field name="res_model">supermercado.cliente</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los clientes.</p>
+        </field>
+    </record>
+
+    <!-- Action: Cesta -->
+    <record id="action_cesta" model="ir.actions.act_window">
+    <field name="name">Cestas</field>
+    <field name="res_model">supermercado.cesta</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p>Gestiona las cestas</p>
+    </field>
+</record>
+
+
+    <!-- Action: Cajero -->
+    <record id="action_cajero" model="ir.actions.act_window">
+        <field name="name">Cajeros</field>
+        <field name="res_model">supermercado.cajero</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los cajeros.</p>
+        </field>
+    </record>
+
+    <!-- Action: Encargado -->
+    <record id="action_encargado" model="ir.actions.act_window">
+        <field name="name">Encargados</field>
+        <field name="res_model">supermercado.encargado</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los encargados.</p>
+        </field>
+    </record>
+
+    <!-- Action: Producto -->
+    <record id="action_producto" model="ir.actions.act_window">
+        <field name="name">Productos</field>
+        <field name="res_model">supermercado.producto</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>Gestiona los productos.</p>
+        </field>
+    </record>
+
+    <!-- Form View: Cliente -->
+    <record id="view_form_cliente" model="ir.ui.view">
+        <field name="name">supermercado.cliente.form</field>
+        <field name="model">supermercado.cliente</field>
+        <field name="arch" type="xml">
+            <form string="Cliente">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="country_id"/>
+                        <field name="total_gastado"/>
+                        <field name="numero_socio"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View: cesta -->
+   <record id="view_form_cesta" model="ir.ui.view">
+    <field name="name">supermercado.cesta.form</field>
+    <field name="model">supermercado.cesta</field>
+    <field name="arch" type="xml">
+        <form string="Cesta">
+            <sheet>
+                <group>
+                    <field name="cliente_id"/>
+                    <field name="cajero_id"/>
+                    <field name="coste"/>
+                    <field name="fecha"/>
+                </group>
+                <group>
+                    <field name="productos_ids">
+                        <tree>
+                            <field name="producto_id"/>
+                            <field name="cantidad"/>
+                            <field name="total"/>
+                        </tree>
+                    </field>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+    <!-- Form View: Cajero -->
+    <record id="view_form_cajero" model="ir.ui.view">
+        <field name="name">supermercado.cajero.form</field>
+        <field name="model">supermercado.cajero</field>
+        <field name="arch" type="xml">
+            <form string="Cajero">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="fecha_inicio"/>
+                        <field name="total_cobrado"/>
+                        <field name="encargado_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Form View: Encargado -->
+    <record id="view_form_encargado" model="ir.ui.view">
+    <field name="name">supermercado.encargado.form</field>
+    <field name="model">supermercado.encargado</field>
+    <field name="arch" type="xml">
+        <form string="Encargado">
+            <sheet>
+                <group>
+                    <field name="nombre"/>
+                    <field name="fecha_inicio"/>
+                </group>
+                <group string="Cajeros">
+                    <field name="cajeros_ids">
+                        <tree>
+                            <field name="nombre"/>
+                            <field name="fecha_inicio"/>
+                        </tree>
+                    </field>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+    <!-- Form View: Producto -->
+    <record id="view_form_producto" model="ir.ui.view">
+        <field name="name">supermercado.producto.form</field>
+        <field name="model">supermercado.producto</field>
+        <field name="arch" type="xml">
+            <form string="Producto">
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="precio_unidad"/>
+                        <field name="stock_inicial"/>
+                        <field name="stock"/>
+                        <field name="tipo"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Definitions -->
+    <menuitem
+            id='menu_supermercado_root'
+            name='Supermercado'
+            sequence='10'/>
+
+    <menuitem
+            id="menu_cliente"
+            name="Clientes"
+            parent="menu_supermercado_root"
+            sequence="20"
+            action="action_cliente"/>
+
+    <menuitem
+            id="menu_cesta"
+            name="Cestas"
+            parent="menu_supermercado_root"
+            sequence="20"
+            action="action_cesta"/>
+
+    <!-- Menu Item: Cajero -->
+    <menuitem
+            id="menu_cajero"
+            name="Cajeros"
+            parent="menu_supermercado_root"
+            sequence="30"
+            action="action_cajero"/>
+
+    <!-- Menu Item: Encargado -->
+    <menuitem
+            id="menu_encargado"
+            name="Encargados"
+            parent="menu_supermercado_root"
+            sequence="40"
+            action="action_encargado"/>
+
+    <!-- Menu Item: Producto -->
+    <menuitem
+            id="menu_producto"
+            name="Productos"
+            parent="menu_supermercado_root"
+            sequence="50"
+            action="action_producto"/>
+</odoo>

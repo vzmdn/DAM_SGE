@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+        <!-- ESCUDERIAS -->
+        <record id="escuderia1" model="herencia1.escuderia">
+            <field name="nombre">Ferrari</field>
+        </record>
+        <record id="escuderia2" model="herencia1.escuderia">
+            <field name="nombre">McLaren</field>
+        </record>
+        <record id="escuderia3" model="herencia1.escuderia">
+            <field name="nombre">Porsche</field>
+        </record>
+
+        <!-- COCHES -->
+        <record id="coche1" model="herencia1.coche">
+            <field name="nombre">Testarossa</field>
+            <field name="escuderia_id" ref="escuderia1" />
+        </record>
+        <record id="coche2" model="herencia1.coche">
+            <field name="nombre">F40</field>
+            <field name="escuderia_id" ref="escuderia1" />
+        </record>
+        <record id="coche3" model="herencia1.coche">
+            <field name="nombre">P1</field>
+            <field name="escuderia_id" ref="escuderia2" />
+        </record>
+        <record id="coche4" model="herencia1.coche">
+            <field name="nombre">720S</field>
+            <field name="escuderia_id" ref="escuderia2" />
+        </record>
+        <record id="coche5" model="herencia1.coche">
+            <field name="nombre">911</field>
+            <field name="escuderia_id" ref="escuderia3" />
+        </record>
+        <record id="coche6" model="herencia1.coche">
+            <field name="nombre">Cayman</field>
+            <field name="escuderia_id" ref="escuderia3" />
+        </record>
+        <record id="coche7" model="herencia1.coche">
+            <field name="nombre">LaFerrari</field>
+            <field name="escuderia_id" ref="escuderia1" />
+        </record>
+        <record id="coche8" model="herencia1.coche">
+            <field name="nombre">Senna</field>
+            <field name="escuderia_id" ref="escuderia2" />
+        </record>
+        <record id="coche9" model="herencia1.coche">
+            <field name="nombre">918 Spyder</field>
+            <field name="escuderia_id" ref="escuderia3" />
+        </record>
+    </data>
+</odoo>

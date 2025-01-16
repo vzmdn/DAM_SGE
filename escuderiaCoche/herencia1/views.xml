@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!-- TREE VIEW FOR ESCUDERIAS -->
+        <record id="view_escuderia_tree" model="ir.ui.view">
+            <field name="name">escuderia.tree</field>
+            <field name="model">herencia1.escuderia</field>
+            <field name="arch" type="xml">
+                <tree string="Escuderias">
+                    <field name="nombre"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- FORM VIEW FOR ESCUDERIAS -->
+        <record id="view_escuderia_form" model="ir.ui.view">
+            <field name="name">escuderia.form</field>
+            <field name="model">herencia1.escuderia</field>
+            <field name="arch" type="xml">
+                <form string="Escuderia">
+                    <group>
+                        <field name="name" />
+                        <field name="coches_ids">
+                            <tree string="Coches">
+                                <field name="name" />
+                            </tree>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION FOR ESCUDERIAS -->
+        <record model="ir.actions.act_window" id="action_escuderia">
+            <field name="name">Escuderias</field>
+            <field name="res_model">herencia1.escuderia</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_escuderia_tree"/>
+            <field name="view_id" ref="view_escuderia_form"/>
+        </record>
+
+        <!-- ACTION FOR COCHES -->
+        <record model="ir.actions.act_window" id="action_coche">
+            <field name="name">Coches</field>
+            <field name="res_model">herencia1.coche</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- MENUS -->
+        <menuitem id="menu_herencia1_root" name="Herencia1" sequence="10"/>
+
+        <menuitem id="menu_coche" name="Coches" parent="menu_herencia1_root" sequence="20" action="action_coche"/>
+
+        <menuitem id="menu_escuderia" name="Escuderias" parent="menu_herencia1_root" sequence="30" action="action_escuderia"/>
+    </data>
+</odoo>

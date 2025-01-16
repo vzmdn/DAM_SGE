@@ -56,7 +56,7 @@ class Workorder(models.Model):
     date_end = fields.Date(string='Closing date')
     employee_id = fields.Many2one('hr.employee', string='Employee', domain="[('department_id','=','Maintenance')]")
     employee_user_id = fields.Integer('hr.employee')
-    employee_phone = fields.Char(string='Employee phone')
+    employee_phone = fields.Char(string='Employee phone', compute='_compute_phone')
     machine_ids = fields.Many2many('manteni.machine', string='Machines')
     program_id = fields.Many2one('manteni.program', string='Program')
     state = fields.Selection(
@@ -74,4 +74,7 @@ class Workorder(models.Model):
     @api.onchange('employee_id')
     def _onchange_employee_id(self):
         self.employee_user_id = self.employee_id.resource_id.user_id
+
+    @api.depends('employee_id')
+    def _compute_phone(self):
         self.employee_phone = self.employee_id.work_phone

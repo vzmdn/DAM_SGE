@@ -1,0 +1,260 @@
+<odoo>
+  <data>
+      
+    <!-- MACHINE -->
+
+    <record model="ir.ui.view" id="manteni.machine_list">
+      <field name="name">Machine list</field>
+      <field name="model">manteni.machine</field>
+      <field name="arch" type="xml">
+        <tree string="Machine list" decoration-bf="state=='on_use'" decoration-danger="state=='repairing'">
+          <field name="name"/>
+          <field name="serial"/>
+          <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="manteni.machine_form">
+      <field name="name">Machine list</field>
+      <field name="model">manteni.machine</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <field name="active" invisible="1"/>
+            <widget name="web_ribbon" text="Archived" bg_color="bg-danger" />
+            <div class="oe_title">
+              <label for="name" string="Machine's denomination" class="oe_edit_only"/>
+              <h1>
+                <field name="name" placeholder="Machine's denomination" modifiers="{'required': true}"/>
+              </h1>
+            </div>
+            <group>
+              <group>
+                <field name="serial"/>
+                <field name="state"/>
+              </group>
+              <group>
+                <field name="suplier_id"/>
+                <field name="city" />
+              </group>
+            </group>
+            <group>
+              <field name="date_begin"/>
+              <field name="hours_maint" />
+            </group>
+            <label for="date_firts_maintenance" string=" " class="fa fa-wrench" />
+            <field name="date_first_maintenance" />
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="manteni.machine_action_window">
+      <field name="name">Machine window</field>
+      <field name="res_model">manteni.machine</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- PROGRAM -->
+
+    <record model="ir.ui.view" id="manteni.program_form">
+        <field name="name">manteni.program.form</field>
+        <field name="model">manteni.program</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Programs">
+                <sheet>
+                    <group>
+                      <field name="name" />
+                    </group>
+                    <group>
+                      <field name="instruction_ids" colspan="4" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="manteni.program_tree">
+        <field name="name">manteni.program.tree</field>
+        <field name="model">manteni.program</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="manteni.program">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="manteni.program_action_window">
+        <field name="name">Programs</field>
+        <field name="res_model">manteni.program</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- INSTRUCTIONS -->
+
+    <record model="ir.ui.view" id="manteni.program_instruction_form">
+        <field name="name">manteni.program.instruction.form</field>
+        <field name="model">manteni.program.instruction</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="manteni.program.instruction">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" colspan="4" />
+                        <field name="program_id" invisible="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="manteni.program_instruction_tree">
+        <field name="name">manteni.program.instruction.tree</field>
+        <field name="model">manteni.program.instruction</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="manteni.program_instruction_action_window">
+        <field name="name">Instructions</field>
+        <field name="res_model">manteni.program.instruction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- WORK ORDERS -->
+
+    <record model="ir.ui.view" id="manteni.workorder_form">
+        <field name="name">manteni.workorder.form</field>
+        <field name="model">manteni.workorder</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="manteni.workorder">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Workorder name" class="oe_edit_only"/>
+                            <h1>
+                             <field name="name" modifiers="{'required': true}"/>
+                            </h1>
+                    </div>
+                    <group>
+                        <group string="Workorder info">
+                            <field name="state" />
+                            <field name="date_begin" string="Opening date"/>
+                            <field name="date_end" string="Closing date" attrs="{'invisible':[('state','!=', 'closed')]}"/>
+                        </group>
+                        <group string="Assignation">
+                            <field name="employee_id"  />
+                            <field name="employee_user_id" invisible="1"/>
+                            <field name="employee_phone"/>
+                            <field name="type" />
+                            <field name="program_id" attrs="{'invisible':[('type', '=', 'corrective')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                          <field name="description" />
+                    </group>
+                    <group string="Machines to repair/revise">
+                       <field name="machine_ids"  />
+                    </group>
+                    <group>
+                        <field name="closing_info" attrs="{'invisible':[('state','!=', 'closed')]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="manteni.workorder_tree">
+        <field name="name">manteni.workorder.tree</field>
+        <field name="model">manteni.workorder</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="manteni.workorder">
+                <field name="date_begin"/>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- calendar view -->
+    <record model="ir.ui.view" id="manteni.workorder_calendar">
+        <field name="name">workorder.calendar</field>
+        <field name="model">manteni.workorder</field>
+        <field name="arch" type="xml">
+            <calendar string="Session Calendar" date_start="date_begin" color="program_id" mode="month">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="manteni.workorder_search_view"  model="ir.ui.view">
+      <field name="model">manteni.workorder</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="description" string="Name and description"
+                filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
+            <field name="employee_id"/>
+            <field name="program_id" widget="selection"/>
+            <filter string="Opened" name="opened" domain="[('state','=','opened')]"/>
+            <group string="Group By">
+            <filter name="group_by_program" string="Program" context="{'group_by': 'program_id'}"/>
+            </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="manteni.workorder_action_window">
+        <field name="name">Work orders</field>
+        <field name="res_model">manteni.workorder</field>
+        <field name="view_mode">tree,form,calendar</field>
+        <field name="context">{'search_default_opened': True}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="manteni.workorder_calendar_action_window">
+        <field name="name">Work orders calendar</field>
+        <field name="res_model">manteni.workorder</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+    <!-- LEFT MENU -->
+
+    <!-- Top menu item -->
+    <menuitem
+            name="Maintenance"
+            id="manteni.menu_root"
+            web_icon="manteni,static/description/icon.png" />
+
+    <!-- menu categories -->
+    <menuitem name="Config" id="manteni.menu_3" parent="manteni.menu_root" sequence="4"/>
+    <!-- actions -->
+    <menuitem name="Workorders" id="manteni.menu_1a" parent="manteni.menu_root" sequence="1"
+              action="manteni.workorder_action_window"/>
+    <menuitem name="Calendar" id="manteni.menu_1b" parent="manteni.menu_root" sequence="3"
+              action="manteni.workorder_calendar_action_window"/>
+    <menuitem name="Machine list" id="manteni.menu_2_1" parent="manteni.menu_3" sequence="5"
+              action="manteni.machine_action_window"/>
+    <menuitem name="Program list" id="manteni.menu_2_2" parent="manteni.menu_3" sequence="6"
+              action="manteni.program_action_window"/>
+    <menuitem id="res_partner_menu"
+            parent="manteni.menu_3"
+            action="action_machinery_seller_form"
+            sequence="7"/>
+
+  </data>
+</odoo>

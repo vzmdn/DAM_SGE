@@ -1,0 +1,33 @@
+<odoo>
+  <data>
+    <!-- EDITORIAL -->
+    <!-- TREE VIEW -->
+
+    <record model="ir.ui.view" id="view_modulo2_editorial_tree">
+      <field name="name">Editorial</field>
+      <field name="model">modulo2.editorial</field>
+      <field name="arch" type="xml">
+        <tree string="Editorial">
+          <field name="name"/>
+          <field name="fechaCreacion"/>
+          <field name="libro_ids"/>
+          <field name="ciudad"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- ACTION -->
+
+    <record model="ir.actions.act_window" id="modulo2_editorial">
+      <field name="name">Editoriales</field>
+      <field name="res_model">modulo2.editorial</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="editorial" parent="modulo1.modulo1_menu_root" id="modulo2.menu_root"  action="modulo2_editorial"/>
+
+  </data>
+</odoo>

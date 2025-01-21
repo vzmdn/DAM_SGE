@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <!-- LIBRO -->
+    <!-- TREE VIEW -->
+
+    <record model="ir.ui.view" id="view_modulo1_libro_tree">
+      <field name="name">Libro</field>
+      <field name="model">modulo1.libro</field>
+      <field name="arch" type="xml">
+        <tree string="Libros">
+          <field name="name"/>
+          <field name="description"/>
+          <field name="pages"/>
+          <field name="isbn"/>
+          <field name="autor_id"/>
+          <field name="purchase"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- ACTION -->
+
+    <record model="ir.actions.act_window" id="modulo1_libro">
+      <field name="name">Libros</field>
+      <field name="res_model">modulo1.libro</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- AUTOR -->
+    <!-- TREE VIEW -->
+
+    <record model="ir.ui.view" id="view_modulo1_autor_tree">
+      <field name="name">Autor</field>
+      <field name="model">modulo1.autor</field>
+      <field name="arch" type="xml">
+        <tree string="Autor">
+          <field name="name"/>
+          <field name="surnameOne"/>
+          <field name="surnameTwo"/>
+          <field name="fechaNac"/>
+          <field name="libro_ids"/>
+          <field name="ciudad"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- ACTION -->
+
+    <record model="ir.actions.act_window" id="modulo1_autor">
+      <field name="name">Autores</field>
+      <field name="res_model">modulo1.autor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="Modulo1" id="modulo1_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Autores" id="modulo1.menu_autores" parent="modulo1_menu_root" action="modulo1_autor"/>
+
+    <!-- actions -->
+
+    <menuitem name="Libros" id="modulo1.menu_autores_libros" parent="modulo1_menu_root"
+              action="modulo1_libro"/>
+  </data>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!--
+    Libro Extension
+  -->
+
+    <record id="view_modulo1_libro_tree" model="ir.ui.view">
+        <field name="name">Libro</field>
+        <field name="model">modulo1.libro</field>
+        <field name="inherit_id" ref="modulo1.view_modulo1_libro_tree"/>
+        <field name="arch" type="xml">
+            <field name="purchase" position="before">
+                <field name="editorial_id"/>
+            </field>
+        </field>
+    </record>
+  </data>
+</odoo>

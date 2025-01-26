@@ -1,0 +1,230 @@
+<odoo>
+    <data>
+        <!-- Tree View: Cliente -->
+        <record id="view_tree_cliente" model="ir.ui.view">
+            <field name="name">garajes.cliente.tree</field>
+            <field name="model">garajes.cliente</field>
+            <field name="arch" type="xml">
+                <tree string="Cliente">
+                    <field name="nombre" />
+                    <field name="apellido1" />
+                    <field name="apellido2" />
+                    <field name="reservas" />
+                    <field name="dinero" />
+                </tree>
+            </field>
+        </record>
+        <!-- Tree View: Coche -->
+        <record id="view_tree_coche" model="ir.ui.view">
+            <field name="name">garajes.coche.tree</field>
+            <field name="model">garajes.coche</field>
+            <field name="arch" type="xml">
+                <tree string="Coche" default_order="reservado desc">
+                    <field name="marca" />
+                    <field name="modelo" />
+                    <field name="matricula" />
+                    <field name="coste_dia"/>
+                    <field name="reservado" />
+                </tree>
+            </field>
+        </record>
+        <!-- Tree View: Reserva -->
+        <record id="view_tree_reserva" model="ir.ui.view">
+            <field name="name">garajes.reserva.tree</field>
+            <field name="model">garajes.reserva</field>
+            <field name="arch" type="xml">
+                <tree string="Reserva">
+                    <field name="cliente_id" />
+                    <field name="coche_id" />
+                    <field name="fecha_fin" />
+                </tree>
+            </field>
+        </record>
+        <!-- Calendar View: Reserva-->
+        <record id="view_calendar_reserva" model="ir.ui.view">
+            <field name="name">garajes.reserva.calendar</field>
+            <field name="model">garajes.reserva</field>
+            <field name="arch" type="xml">
+                <calendar string="Reserva" mode="month" date_start="fecha_inicio" date_stop="fecha_fin">
+                    <field name="cliente_id" />
+                    <field name="coche_id" />
+                    <field name="fecha_inicio" />
+                    <field name="fecha_fin" />
+                </calendar>
+            </field>
+        </record>
+        <!-- Tree View: Garaje-->
+        <record id="view_tree_garaje" model="ir.ui.view">
+            <field name="name">garajes.garaje.tree</field>
+            <field name="model">garajes.garaje</field>
+            <field name="arch" type="xml">
+                <tree string="Garaje">
+                    <field name="calle" />
+                    <field name="numero" />
+                    <field name="plazas_libres" />
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Action: Cliente -->
+        <record id="action_cliente" model="ir.actions.act_window">
+            <field name="name">Clientes</field>
+            <field name="res_model">garajes.cliente</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Gestiona los clientes.</p>
+            </field>
+        </record>
+        <!-- Action: Coche -->
+        <record id="action_coche" model="ir.actions.act_window">
+            <field name="name">Coches</field>
+            <field name="res_model">garajes.coche</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Gestiona los coches.</p>
+            </field>
+        </record>
+        <!-- Action: Reserva -->
+        <record id="action_reserva" model="ir.actions.act_window">
+            <field name="name">Reservas</field>
+            <field name="res_model">garajes.reserva</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Gestiona las reservas.</p>
+            </field>
+        </record>
+        <!-- Action: Reserva calendar -->
+        <record id="action_reserva_calendar" model="ir.actions.act_window">
+            <field name="name">Reservas</field>
+            <field name="res_model">garajes.reserva</field>
+            <field name="view_mode">calendar,form</field>
+            <field name="help" type="html">
+                <p>Gestiona las reservas.</p>
+            </field>
+        </record>
+        <!-- Action: Garaje -->
+        <record id="action_garaje" model="ir.actions.act_window">
+            <field name="name">Garajes</field>
+            <field name="res_model">garajes.garaje</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>Gestiona los garajes.</p>
+            </field>
+        </record>
+
+        <!-- Form View: Cliente -->
+        <record id="view_form_cliente" model="ir.ui.view">
+            <field name="name">garajes.cliente.form</field>
+            <field name="model">garajes.cliente</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <sheet>
+                        <group>
+                            <field name="nombre" />
+                            <field name="apellido1" />
+                            <field name="apellido2" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Form View: Coche -->
+        <record id="view_form_cliente" model="ir.ui.view">
+            <field name="name">garajes.coche.form</field>
+            <field name="model">garajes.coche</field>
+            <field name="arch" type="xml">
+                <form string="Coche">
+                    <sheet>
+                        <group>
+                            <field name="marca" />
+                            <field name="modelo" />
+                            <field name="matricula" />
+                            <field name="coste_dia"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Form View: Reserva -->
+        <record id="view_form_reserva" model="ir.ui.view">
+            <field name="name">garajes.reserva.form</field>
+            <field name="model">garajes.reserva</field>
+            <field name="arch" type="xml">
+                <form string="Reserva">
+                    <sheet>
+                        <group>
+                            <field name="cliente_id" />
+                            <field name="coche_id" domain="[('reservado', '=', False)]"/>
+                            <field name="fecha_inicio" />
+                            <field name="fecha_fin" />
+                            <field name="hora" />
+                            <field name="dias" />
+                            <field name="precio" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- Form View: Garaje -->
+        <record id="view_form_garaje" model="ir.ui.view">
+            <field name="name">garajes.garaje.form</field>
+            <field name="model">garajes.garaje</field>
+            <field name="arch" type="xml">
+                <form string="Garaje">
+                    <sheet>
+                        <group>
+                            <field name="calle" />
+                            <field name="numero" />
+                            <field name="plazas_totales" />
+                            <field name="plazas_ocupadas" />
+                            <field name="plazas_libres" />
+                            <field name="coches_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Menu Definitions -->
+        <menuitem
+            id='menu_garajes_root'
+            name='Garajes'
+            sequence='10' />
+
+        <menuitem
+            id="menu_cliente"
+            name="Clientes"
+            parent="menu_garajes_root"
+            sequence="20"
+            action="action_cliente" />
+
+        <menuitem
+            id="menu_coche"
+            name="Coches"
+            parent="menu_garajes_root"
+            sequence="20"
+            action="action_coche" />
+
+        <menuitem
+            id="menu_reserva"
+            name="Reservas"
+            parent="menu_garajes_root"
+            sequence="20"
+            action="action_reserva"/>
+
+        <menuitem
+            id="menu_reserva_calendar"
+            name="Calendario de reservas"
+            parent="menu_garajes_root"
+            sequence="20"
+            action="action_reserva_calendar"/>
+
+        <menuitem
+            id="menu_garaje"
+            name="Garajes"
+            parent="menu_garajes_root"
+            sequence="20"
+            action="action_garaje" />
+    </data>
+</odoo>

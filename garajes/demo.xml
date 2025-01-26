@@ -1,0 +1,143 @@
+<odoo>
+    <data>
+        <!--Garajes-->
+        <record id="garaje1" model="garajes.garaje">
+            <field name="calle">Calle Mayor</field>
+            <field name="numero">1</field>
+            <field name="plazas_totales">10</field>
+        </record>
+        <record id="garaje2" model="garajes.garaje">
+            <field name="calle">Calle Pintor Sorolla</field>
+            <field name="numero">43</field>
+            <field name="plazas_totales">20</field>
+        </record>
+        <record id="garaje3" model="garajes.garaje">
+            <field name="calle">Calle San Vicente</field>
+            <field name="numero">12</field>
+            <field name="plazas_totales">5</field>
+        </record>
+
+        <!--Clientes-->
+        <record id="cliente0" model="garajes.cliente">
+            <field name="nombre">Marcos</field>
+            <field name="apellido1">Marquez</field>
+            <field name="apellido2">Rozas</field>
+            <field name="dinero_inicial">1000</field>
+        </record>
+        <record id="cliente1" model="garajes.cliente">
+            <field name="nombre">Tomás</field>
+            <field name="apellido1">Tomenos</field>
+            <field name="apellido2">Duque</field>
+            <field name="dinero_inicial">1000</field>
+        </record>
+        <record id="cliente2" model="garajes.cliente">
+            <field name="nombre">Lola</field>
+            <field name="apellido1">Lolita</field>
+            <field name="apellido2">Lali</field>
+            <field name="dinero_inicial">1000</field>
+        </record>
+        <record id="cliente3" model="garajes.cliente">
+            <field name="nombre">Simon</field>
+            <field name="apellido1">Nelson</field>
+            <field name="apellido2">Pastruli</field>
+            <field name="dinero_inicial">1000</field>
+        </record>
+
+        <!--Coches-->
+        <record id="coche1" model="garajes.coche">
+            <field name="marca">Audi</field>
+            <field name="modelo">A3</field>
+            <field name="matricula">4782MVC</field>
+            <field name="garaje_id" ref="garaje1"></field>
+            <field name="coste_dia">70</field>
+        </record>
+        <record id="coche2" model="garajes.coche">
+            <field name="marca">Seat</field>
+            <field name="modelo">Ibiza</field>
+            <field name="matricula">1234FBC</field>
+            <field name="garaje_id" ref="garaje1"></field>
+            <field name="coste_dia">55</field>
+
+        </record>
+        <record id="coche3" model="garajes.coche">
+            <field name="marca">Renault</field>
+            <field name="modelo">Clio</field>
+            <field name="matricula">5678DNF</field>
+            <field name="garaje_id" ref="garaje2"></field>
+            <field name="coste_dia">50</field>
+
+        </record>
+        <record id="coche4" model="garajes.coche">
+            <field name="marca">Ford</field>
+            <field name="modelo">Focus</field>
+            <field name="matricula">9012GHC</field>
+            <field name="garaje_id" ref="garaje2"></field>
+            <field name="coste_dia">60</field>
+        </record>
+        <record id="coche5" model="garajes.coche">
+            <field name="marca">Opel</field>
+            <field name="modelo">Corsa</field>
+            <field name="matricula">3456JKL</field>
+            <field name="garaje_id" ref="garaje3"></field>
+            <field name="coste_dia">45</field>
+        </record>
+        <record id="coche6" model="garajes.coche">
+            <field name="marca">Peugeot</field>
+            <field name="modelo">206</field>
+            <field name="matricula">7890MNQ</field>
+            <field name="garaje_id" ref="garaje3"></field>
+            <field name="coste_dia">40</field>
+        </record>
+        <record id="coche7" model="garajes.coche">
+            <field name="marca">Citroen</field>
+            <field name="modelo">C3</field>
+            <field name="matricula">1234PQR</field>
+            <field name="garaje_id" ref="garaje3"></field>
+            <field name="coste_dia">55</field>
+        </record>
+        <record id="coche8" model="garajes.coche">
+            <field name="marca">Fiat</field>
+            <field name="modelo">Punto</field>
+            <field name="matricula">5678STZ</field>
+            <field name="garaje_id" ref="garaje1"></field>
+            <field name="coste_dia">45</field>
+        </record>
+        <record id="coche9" model="garajes.coche">
+            <field name="marca">Toyota</field>
+            <field name="modelo">Yaris</field>
+            <field name="matricula">9012VWX</field>
+            <field name="garaje_id" ref="garaje2"></field>
+            <field name="coste_dia">65</field>
+        </record>
+        <record id="coche10" model="garajes.coche">
+            <field name="marca">Nissan</field>
+            <field name="modelo">Micra</field>
+            <field name="matricula">3456BWD</field>
+            <field name="garaje_id" ref="garaje2"></field>
+            <field name="coste_dia">50</field>
+        </record>
+
+        <!--Reservas-->
+        <record id="reserva1" model="garajes.reserva">
+                <field name="dias">4</field>
+                <field name="cliente_id" ref="cliente1"></field>
+                <field name="coche_id" ref="coche4"></field>
+        </record>
+        <record id="reserva2" model="garajes.reserva">
+                <field name="dias">7</field>
+                <field name="cliente_id" ref="cliente3"></field>
+                <field name="coche_id" ref="coche9"></field>
+        </record>
+        <record id="reserva3" model="garajes.reserva">
+                <field name="dias">2</field>
+                <field name="cliente_id" ref="cliente2"></field>
+                <field name="coche_id" ref="coche7"></field>
+        </record>
+        <record id="reserva4" model="garajes.reserva">
+                <field name="dias">3</field>
+                <field name="cliente_id" ref="cliente0"></field>
+                <field name="coche_id" ref="coche2"></field>
+        </record>
+
+    </data>
+</odoo>
